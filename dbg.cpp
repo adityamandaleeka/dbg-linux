@@ -127,10 +127,10 @@ int main(int argc, const char **args)
     if (shim_lib == nullptr)
     {
 #ifdef FEATURE_PAL
-        printf("%s not found", shimName);
+        printf("%s not found\n", shimName);
 #else
         int error = GetLastError();
-        printf("%s not found 0x%04x", shimName, error);
+        printf("%s not found 0x%04x\n", shimName, error);
 #endif
         return 1;
     }
@@ -158,13 +158,13 @@ int main(int argc, const char **args)
     {
         printf("createDebuggingInterfaceFromVersion == nullptr\n");
         return 1;
-    }    
+    }
 
-    if (argc < 1) 
+    if (argc < 2) 
     {
         printf("No pid has been given in arguments\n");
         return 1;
-    }    
+    }
 
     int pid = atoi(args[1]);
     printf("Enumerating CLRs in process %d\n", pid);
